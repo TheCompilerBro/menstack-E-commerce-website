@@ -63,6 +63,10 @@ A full-stack MERN e-commerce project using **MongoDB, Express, React, and Node.j
    - Frontend: `http://localhost:5173`
    - API health: `http://localhost:5001/` (or your configured API port)
 
+## GitHub update summary
+
+A concise list of the latest repository changes is tracked in [`CHANGELOG.md`](./CHANGELOG.md).
+
 ## Demo account
 
 - Email: `demo@store.com`
