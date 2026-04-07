@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: ["main", "master", "work"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: |
+            server/package-lock.json
+            client/package-lock.json
+
+      - name: Install server dependencies
+        run: npm install --prefix server
+
+      - name: Install client dependencies
+        run: npm install --prefix client
+
+      - name: Build client
+        run: npm run build --prefix client
+
+      - name: Syntax check backend
+        run: |
+          node --check server/src/index.js
+          node --check server/src/controllers/authController.js
+          node --check server/src/controllers/productController.js
+          node --check server/src/controllers/orderController.js
