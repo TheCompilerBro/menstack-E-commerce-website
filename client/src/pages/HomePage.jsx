@@ -13,8 +13,14 @@ const HomePage = () => {
       try {
         const { data } = await api.get('/products');
         setProducts(data);
+<<<<<<< HEAD
+      } catch (err) {
+        const reason = err.response?.data?.message || err.message || 'unknown error';
+        setError(`Unable to load products: ${reason}`);
+=======
       } catch {
         setError('Unable to load products. Is backend running?');
+>>>>>>> main
       } finally {
         setLoading(false);
       }

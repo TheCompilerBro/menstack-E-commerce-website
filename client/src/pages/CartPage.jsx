@@ -58,7 +58,11 @@ const CartPage = () => {
           <div className="cart-items">
             {cart.map((item) => (
               <article key={item._id} className="cart-item">
+<<<<<<< HEAD
+                <img src={item.image} alt={item.name} onError={(e) => { e.currentTarget.src = "https://placehold.co/900x600/e8e8e8/111111?text=Product"; }} />
+=======
                 <img src={item.image} alt={item.name} />
+>>>>>>> main
                 <div>
                   <h4>{item.name}</h4>
                   <p>${item.price}</p>
