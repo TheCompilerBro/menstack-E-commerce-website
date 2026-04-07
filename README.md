@@ -1,0 +1,72 @@
+# MERN Minimal E-commerce Website
+
+A full-stack MERN e-commerce project using **MongoDB, Express, React, and Node.js** with a **minimalist UI** and **skeleton shimmer loading**.
+
+## What is implemented
+
+- **Auth**: register, login, profile (JWT)
+- **Catalog**: product list + product detail API
+- **Cart**: add/remove/update quantity, local persistence
+- **Orders**: place order + view my orders
+- **Loading UX**: skeleton shimmer cards while fetching products
+- **Seed data**: sample products + demo user
+
+## Project Structure
+
+- `server/` → Express API + MongoDB models
+- `client/` → React + Vite web app
+
+## Quick start
+
+1. Install dependencies
+
+   ```bash
+   npm run install:all
+   ```
+
+2. Start MongoDB (choose one)
+
+   - Local MongoDB service, or
+   - Docker:
+
+   ```bash
+   docker compose up -d
+   ```
+
+3. Configure server env
+
+   ```bash
+   cp server/.env.example server/.env
+   ```
+
+   Default local value:
+
+   ```env
+   MONGO_URI=mongodb://127.0.0.1:27017/mern_store
+   ```
+
+4. Seed demo data
+
+   ```bash
+   npm run seed --prefix server
+   ```
+
+5. Run backend + frontend (in separate terminals)
+
+   ```bash
+   npm run dev:server
+   npm run dev:client
+   ```
+
+6. Open:
+   - Frontend: `http://localhost:5173`
+   - API health: `http://localhost:5000/`
+
+## Demo account
+
+- Email: `demo@store.com`
+- Password: `password123`
+
+## Notes about GitHub view
+
+If files are not showing on GitHub, confirm you pushed the correct branch and that GitHub is viewing the latest commit. This repository is plain source code (no generated files required), so all project files are committed directly.
