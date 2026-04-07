@@ -15,3 +15,9 @@
 ### Why this was changed
 
 To provide a complete starting point that runs quickly for local development and can be iterated into a production-ready e-commerce app.
+
+## Follow-up Fix
+
+- Replaced external product image URLs with stable placeholder URLs to avoid `403 Forbidden` image failures in browser consoles.
+- Added client-side image `onError` fallback in product and cart UI components.
+- Added README troubleshooting note with re-seed command to refresh older DB records.

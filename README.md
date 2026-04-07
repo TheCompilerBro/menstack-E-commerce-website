@@ -87,3 +87,10 @@ A concise list of the latest repository changes is tracked in [`CHANGELOG.md`](.
   Then restart frontend dev server and verify endpoint: `http://localhost:5001/api/products`.
 
 - **Files not showing on GitHub**: confirm you pushed the correct branch and that GitHub is viewing the latest commit.
+
+- **Console shows `403 (Forbidden)` for image resources**: this project now uses placeholder image URLs and UI image fallbacks, but if seeded DB still has old external image URLs, re-run seed to refresh:
+
+  ```bash
+  npm run seed --prefix server
+  ```
+
