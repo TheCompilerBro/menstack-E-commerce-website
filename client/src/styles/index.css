@@ -226,24 +226,3 @@ select {
     grid-template-columns: 1fr;
   }
 }
-
-.admin-section {
-  margin-top: 1rem;
-  background: #fff;
-  border: 1px solid #e8e8e8;
-  border-radius: 12px;
-  padding: 1rem;
-}
-
-.admin-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.55rem 0;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.admin-row:last-child {
-  border-bottom: none;
-}

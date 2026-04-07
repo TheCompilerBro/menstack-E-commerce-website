@@ -34,8 +34,3 @@ export const getMyOrders = async (req, res) => {
   const orders = await Order.find({ user: req.user._id }).sort({ createdAt: -1 });
   res.json(orders);
 };
-
-export const getAllOrders = async (_, res) => {
-  const orders = await Order.find({}).populate('user', 'name email').sort({ createdAt: -1 });
-  res.json(orders);
-};

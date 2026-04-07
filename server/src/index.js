@@ -7,7 +7,7 @@ import orderRoutes from './routes/orderRoutes.js';
 import productRoutes from './routes/productRoutes.js';
 
 dotenv.config();
-await connectDB();
+connectDB();
 
 const app = express();
 

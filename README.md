@@ -8,10 +8,8 @@ A full-stack MERN e-commerce project using **MongoDB, Express, React, and Node.j
 - **Catalog**: product list + product detail API
 - **Cart**: add/remove/update quantity, local persistence
 - **Orders**: place order + view my orders
-- **Admin**: add/delete products, manage users, view all orders
 - **Loading UX**: skeleton shimmer cards while fetching products
 - **Seed data**: sample products + demo user
-- **Resilience**: product API falls back to bundled sample catalog if DB product query fails
 
 ## Project Structure
 
@@ -62,56 +60,13 @@ A full-stack MERN e-commerce project using **MongoDB, Express, React, and Node.j
 
 6. Open:
    - Frontend: `http://localhost:5173`
-   - API health: `http://localhost:5001/` (or your configured API port)
-
-## GitHub update summary
-
-A concise list of the latest repository changes is tracked in [`CHANGELOG.md`](./CHANGELOG.md).
+   - API health: `http://localhost:5000/`
 
 ## Demo account
 
 - Email: `demo@store.com`
 - Password: `password123`
 
-- Admin: `admin@store.com` / `admin123`
+## Notes about GitHub view
 
-## Troubleshooting
-
-- **Products not loading / 403-style errors on frontend**: this usually means the UI is pointing to the wrong backend origin.
-  - Default Vite proxy target is `http://localhost:5001`.
-  - Set `client/.env` to match your backend:
-
-  ```env
-  VITE_PROXY_TARGET=http://localhost:5001
-  # or use direct API base if not proxying
-  # VITE_API_URL=http://localhost:5001/api
-  ```
-
-  Then restart frontend dev server and verify endpoint: `http://localhost:5001/api/products`.
-
-- **Files not showing on GitHub**: confirm you pushed the correct branch and that GitHub is viewing the latest commit.
-
-- **Console shows `403 (Forbidden)` for image resources**: this project now uses placeholder image URLs and UI image fallbacks, but if seeded DB still has old external image URLs, re-run seed to refresh:
-
-  ```bash
-  npm run seed --prefix server
-  ```
-
-
-
-## Update to GitHub
-
-After making local changes, publish updates with:
-
-```bash
-git add .
-git commit -m "your message"
-git push origin <your-branch>
-```
-
-Then open/update your Pull Request on GitHub to reflect the latest changes.
-
-
-## GitHub CI
-
-This repository includes a GitHub Actions workflow at `.github/workflows/ci.yml` that installs dependencies, builds the client, and runs backend syntax checks on pushes and pull requests.
+If files are not showing on GitHub, confirm you pushed the correct branch and that GitHub is viewing the latest commit. This repository is plain source code (no generated files required), so all project files are committed directly.
