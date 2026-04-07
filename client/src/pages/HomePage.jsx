@@ -13,8 +13,9 @@ const HomePage = () => {
       try {
         const { data } = await api.get('/products');
         setProducts(data);
-      } catch {
-        setError('Unable to load products. Is backend running?');
+      } catch (err) {
+        const reason = err.response?.data?.message || err.message || 'unknown error';
+        setError(`Unable to load products: ${reason}`);
       } finally {
         setLoading(false);
       }

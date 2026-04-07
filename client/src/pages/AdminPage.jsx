@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { api } from '../api/api';
 import { useStore } from '../context/StoreContext';
 
@@ -43,7 +43,16 @@ const AdminPage = () => {
   }, [auth]);
 
   if (!auth) return <Navigate to="/login?redirect=/admin" replace />;
-  if (!auth.isAdmin) return <Navigate to="/" replace />;
+  if (!auth.isAdmin) {
+    return (
+      <main className="form-wrap">
+        <h2>Admin access required</h2>
+        <p className="error">You are logged in, but this account is not an admin.</p>
+        <p>Login with admin account: <strong>admin@store.com</strong> / <strong>admin123</strong></p>
+        <p><Link to="/login?redirect=/admin">Switch account</Link></p>
+      </main>
+    );
+  }
 
   const handleAddProduct = async (e) => {
     e.preventDefault();

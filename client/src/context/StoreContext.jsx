@@ -27,6 +27,22 @@ export const StoreProvider = ({ children }) => {
     }
   }, [auth]);
 
+
+  useEffect(() => {
+    const syncProfile = async () => {
+      if (!auth?.token || auth?.isAdmin !== undefined) return;
+
+      try {
+        const { data } = await api.get('/auth/profile');
+        setAuth((prev) => ({ ...prev, isAdmin: data.isAdmin, name: data.name, email: data.email, _id: data._id }));
+      } catch {
+        setAuth(null);
+      }
+    };
+
+    syncProfile();
+  }, [auth]);
+
   const addToCart = (product) => {
     setCart((prev) => {
       const exists = prev.find((item) => item._id === product._id);
