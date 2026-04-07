@@ -27,3 +27,7 @@ To provide a complete starting point that runs quickly for local development and
 - Added admin-only UI page to add/delete products, manage users, and view all orders.
 - Added protected admin backend APIs for products, users, and orders management.
 - Added seeded admin user (`admin@store.com` / `admin123`).
+
+## GitHub Update Note
+
+- Added README section documenting exact commands to publish local changes to GitHub and update PRs.

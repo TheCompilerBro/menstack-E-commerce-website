@@ -97,3 +97,16 @@ A concise list of the latest repository changes is tracked in [`CHANGELOG.md`](.
   npm run seed --prefix server
   ```
 
+
+
+## Update to GitHub
+
+After making local changes, publish updates with:
+
+```bash
+git add .
+git commit -m "your message"
+git push origin <your-branch>
+```
+
+Then open/update your Pull Request on GitHub to reflect the latest changes.
