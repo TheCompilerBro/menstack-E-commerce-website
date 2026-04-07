@@ -62,6 +62,7 @@ A full-stack MERN e-commerce project using **MongoDB, Express, React, and Node.j
 
 6. Open:
    - Frontend: `http://localhost:5173`
+   - Admin dashboard: `http://localhost:5173/admin-dashboard`
    - API health: `http://localhost:5001/` (or your configured API port)
 
 ## GitHub update summary

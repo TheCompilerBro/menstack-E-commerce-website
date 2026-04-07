@@ -18,6 +18,7 @@ const App = () => (
         <Route path="/cart" element={<CartPage />} />
         <Route path="/orders" element={<OrdersPage />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/admin-dashboard" element={<AdminPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>

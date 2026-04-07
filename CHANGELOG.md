@@ -40,3 +40,8 @@ To provide a complete starting point that runs quickly for local development and
 
 - Improved `/admin` behavior: non-admin users now see clear access guidance instead of being silently redirected home.
 - Added profile-role sync on app load for older sessions missing `isAdmin` in local storage.
+
+## Admin Dashboard URL + Order Items
+
+- Added alternate admin URL: `/admin-dashboard` (same protected admin page).
+- Admin orders section now shows each order's line items (`name x qty`).

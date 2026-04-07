@@ -73,7 +73,7 @@ const AdminPage = () => {
 
   return (
     <main>
-      <h2>Admin Panel</h2>
+      <h2>Admin Dashboard</h2>
       {error && <p className="error">{error}</p>}
 
       <section className="admin-section">
@@ -112,10 +112,17 @@ const AdminPage = () => {
       </section>
 
       <section className="admin-section">
-        <h3>Orders</h3>
+        <h3>Orders with items</h3>
         {orders.map((order) => (
-          <article key={order._id} className="admin-row">
-            <span>{order.user?.email || 'unknown'} - ${order.totalPrice.toFixed(2)} - {new Date(order.createdAt).toLocaleDateString()}</span>
+          <article key={order._id} className="admin-order">
+            <div className="admin-row">
+              <span>{order.user?.email || 'unknown'} - ${order.totalPrice.toFixed(2)} - {new Date(order.createdAt).toLocaleDateString()}</span>
+            </div>
+            <ul>
+              {order.orderItems?.map((item, idx) => (
+                <li key={`${order._id}-${idx}`}>{item.name} x {item.qty}</li>
+              ))}
+            </ul>
           </article>
         ))}
       </section>

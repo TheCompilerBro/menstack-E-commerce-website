@@ -22,7 +22,7 @@ const Navbar = () => {
         {auth ? (
           <>
             <NavLink to="/orders">Orders</NavLink>
-            {auth.isAdmin && <NavLink to="/admin">Admin</NavLink>}
+            {auth.isAdmin && <NavLink to="/admin-dashboard">Admin</NavLink>}
             <button className="link-button" onClick={handleLogout} type="button">
               Logout
             </button>
