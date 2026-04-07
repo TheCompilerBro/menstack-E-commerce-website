@@ -17,38 +17,44 @@ const CartPage = () => {
       return;
     }
 
-    const shippingAddress = {
-      address: '123 Minimal Street',
-      city: 'San Francisco',
-      postalCode: '94105',
-      country: 'USA'
-    };
+    try {
+      const shippingAddress = {
+        address: '123 Minimal Street',
+        city: 'San Francisco',
+        postalCode: '94105',
+        country: 'USA'
+      };
 
-    const orderItems = cart.map(({ _id, name, image, qty, price }) => ({
-      product: _id,
-      name,
-      image,
-      qty,
-      price
-    }));
+      const orderItems = cart.map(({ _id, name, image, qty, price }) => ({
+        product: _id,
+        name,
+        image,
+        qty,
+        price
+      }));
 
-    await api.post('/orders', {
-      orderItems,
-      shippingAddress,
-      paymentMethod: 'Card',
-      itemsPrice,
-      taxPrice,
-      shippingPrice,
-      totalPrice
-    });
+      await api.post('/orders', {
+        orderItems,
+        shippingAddress,
+        paymentMethod: 'Card',
+        itemsPrice,
+        taxPrice,
+        shippingPrice,
+        totalPrice
+      });
 
-    clearCart();
-    navigate('/orders');
+      clearCart();
+      navigate('/orders');
+    } catch (error) {
+      console.error('Order failed:', error);
+      alert('Failed to place order');
+    }
   };
 
   return (
     <main className="cart-page">
       <h2>Cart</h2>
+
       {cart.length === 0 ? (
         <p>
           Cart is empty. <Link to="/">Go shopping</Link>
@@ -58,31 +64,49 @@ const CartPage = () => {
           <div className="cart-items">
             {cart.map((item) => (
               <article key={item._id} className="cart-item">
-                <img src={item.image} alt={item.name} />
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  onError={(e) => {
+                    e.currentTarget.src =
+                      'https://placehold.co/900x600/e8e8e8/111111?text=Product';
+                  }}
+                />
+
                 <div>
                   <h4>{item.name}</h4>
                   <p>${item.price}</p>
                 </div>
-                <select value={item.qty} onChange={(e) => updateQty(item._id, e.target.value)}>
+
+                <select
+                  value={item.qty}
+                  onChange={(e) => updateQty(item._id, Number(e.target.value))}
+                >
                   {Array.from({ length: item.stock }, (_, i) => i + 1).map((x) => (
                     <option key={x} value={x}>
                       {x}
                     </option>
                   ))}
                 </select>
-                <button type="button" onClick={() => removeFromCart(item._id)}>
+
+                <button
+                  type="button"
+                  onClick={() => removeFromCart(item._id)}
+                >
                   Remove
                 </button>
               </article>
             ))}
           </div>
+
           <aside className="checkout-box">
             <p>Items: ${itemsPrice.toFixed(2)}</p>
             <p>Tax: ${taxPrice.toFixed(2)}</p>
             <p>Shipping: ${shippingPrice.toFixed(2)}</p>
             <h3>Total: ${totalPrice.toFixed(2)}</h3>
+
             <button type="button" onClick={placeOrder}>
-              Place order
+              Place Order
             </button>
           </aside>
         </>
